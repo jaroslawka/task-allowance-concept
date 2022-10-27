@@ -105,6 +105,13 @@ class RuleES implements Calculation
     }
 }
 
+class RuleByCountry implements Calculation
+{
+    public function calculate(Allowance $allowance, Dependencies $dependencies)
+    {
+        $this->getRuleForCountry($dependencies->getCountry())->calculation($allowance, $dependencies);
+    }
+}
 
 class RepositoryDrivenRule implements Calculation
 {
